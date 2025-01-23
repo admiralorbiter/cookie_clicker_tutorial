@@ -4,6 +4,18 @@ import pygame
 # Initialize Pygame
 pygame.init()
 
+# Initialize the Pygame mixer for audio
+pygame.mixer.init()
+
+# Load the click sound
+click_sound = pygame.mixer.Sound("click.mp3")
+
+# Optionally, load background music
+pygame.mixer.music.load("background.wav")
+
+# Play the background music on a loop
+pygame.mixer.music.play(loops=-1)
+
 # Set up the game window dimensions
 WINDOW_WIDTH = 600
 WINDOW_HEIGHT = 400
@@ -60,6 +72,7 @@ while running:
             if (cookie_x <= mouse_x <= cookie_x + cookie_size[0] and
                     cookie_y <= mouse_y <= cookie_y + cookie_size[1]):
                 score += 1  # Increment the score
+                click_sound.play()  # Play the click sound
 
             # Check if the click is on the upgrade button
             elif (button_x <= mouse_x <= button_x + button_width and
