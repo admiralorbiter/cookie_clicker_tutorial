@@ -41,6 +41,9 @@ while running:
             if (cookie_x <= mouse_x <= cookie_x + cookie_size[0] and
                     cookie_y <= mouse_y <= cookie_y + cookie_size[1]):
                 score += 1  # Increment the score
+        elif event.type == pygame.KEYDOWN:
+            if event.key ==pygame.K_ESCAPE:
+                running = False
 
     
 
