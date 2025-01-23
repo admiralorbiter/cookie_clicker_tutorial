@@ -31,10 +31,18 @@ score = 0
 # Main game loop
 running = True
 while running:
-    # Check for events (e.g., window close)
+    # Detect mouse click events
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        elif event.type == pygame.MOUSEBUTTONDOWN:  # Check for mouse button press
+            mouse_x, mouse_y = pygame.mouse.get_pos()  # Get mouse click position
+            # Check if the click is on the cookie
+            if (cookie_x <= mouse_x <= cookie_x + cookie_size[0] and
+                    cookie_y <= mouse_y <= cookie_y + cookie_size[1]):
+                score += 1  # Increment the score
+
+    
 
     # Fill the screen with a background color (e.g., white)
     screen.fill((255, 255, 255))  # RGB color for white
